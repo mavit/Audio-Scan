@@ -2,6 +2,9 @@ Revision history for Audio::Scan
 
 Note: Bug numbers refer to bugs at https://bugs-archive.lyrion.org/index.html
 
+1.14	2026-06-26
+	- mp4: fix atom validation to avoid ignoring entire file.
+
 1.13	2026-06-12
 	- ID3: Support multi-value TXXX/WXXX frames.
 	- Add support for files larger than 2GB.

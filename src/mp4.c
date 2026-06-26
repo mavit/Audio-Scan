@@ -1710,7 +1710,8 @@ _mp4_parse_ilst(mp4info *mp4)
       }
       else {
         DEBUG_TRACE("    invalid data size %d, skipping value\n", bsize);
-        _mp4_skip(mp4, size - 12);
+        _mp4_skip(mp4, bsize + size - 12);
+        mp4->rsize -= bsize;
       }
     }
 

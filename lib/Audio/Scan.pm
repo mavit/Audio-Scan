@@ -927,13 +927,25 @@ Andy Grundman, E<lt>andy@hybridized.orgE<gt>
 
 Dan Sully, E<lt>daniel@cpan.orgE<gt>
 
-=head1 COPYRIGHT AND LICENSE
+=head1 COPYRIGHT AND LICENSES
 
 Copyright (C) 2010-2011 Logitech, Inc.
 
-This program is free software; you can redistribute it and/or modify
+Audio::Scan is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
+
+APE decoder originally copyright 2007 Jeremy Evans.
+
+<buffer.c> derived from Tatu Ylonen, copyright 1995.
+
+MPC decoder originally copyright 2005, The Musepack Development Team.
+
+ISO C9x compliant inttypes.h Copyright 2006 Alexander Chemeris.
+
+Portable C<stdint.h> originally copyright 2005-2007 Paul Hsieh.
+
+See the C<COPYING*> files in the distribution for more information.
 
 =cut

@@ -1,5 +1,10 @@
 Changes
 COPYING
+COPYING.ape
+COPYING.buffer
+COPYING.mpc
+COPYING.pinttypes
+COPYING.pstdint
 include/aac.h
 include/ape.h
 include/asf.h

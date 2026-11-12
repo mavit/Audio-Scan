@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  release:
+    types: released
+
+jobs:
+  release:
+    name: Build and release to CPAN
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        perl-version:
+          - '5.42'
+
+    container:
+      # https://hub.docker.com/r/perldocker/perl-tester
+      image: perldocker/perl-tester:${{ matrix.perl-version }}
+
+    steps:
+      - uses: $/.github/actions/build
+      - name: Create distribution
+        run: |
+          cpanm --installdeps --with-develop --notest .
+          make dist
+      - name: Upload to CPAN
+        id: upload
+        uses: thibaultduponchelle/action-upload-to-cpan@a026cc0a0de20c07f6517d8499d0b86a46b0fbf1
+        with:
+          username: ${{ secrets.pause_username }}
+          password: ${{ secrets.pause_password }}

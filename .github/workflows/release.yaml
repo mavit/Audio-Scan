@@ -19,13 +19,18 @@ jobs:
 
     steps:
       - uses: $/.github/actions/build
+
       - name: Create distribution
         run: |
           cpanm --installdeps --with-develop --notest .
           make dist
+
       - name: Upload to CPAN
-        id: upload
-        uses: thibaultduponchelle/action-upload-to-cpan@a026cc0a0de20c07f6517d8499d0b86a46b0fbf1
-        with:
-          username: ${{ secrets.pause_username }}
-          password: ${{ secrets.pause_password }}
+        run: |
+          cpanm CPAN::Uploader
+          perl -E 'print $ENV{q(PAUSE_PASSWORD)}' \
+            | cpan-upload --user="$PAUSE_USERNAME" \
+                          "Audio-Scan-$GITHUB_REF_NAME.tar.gz"
+        env:
+          PAUSE_USERNAME: ${{ secrets.pause_username }}
+          PAUSE_PASSWORD: ${{ secrets.pause_password }}
